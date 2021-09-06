@@ -48,10 +48,10 @@ class GP4(Packet):
                    BitField("ext_len", 0, 8),
                    BitField("flags", 0, 15),
                    BitField("one", 1, 1),
-                   IntField("SPI", 0),
-                   ConditionalField(LongField("iv", 0),
+                   XIntField("SPI", 0),
+                   ConditionalField(XLongField("iv", 0),
                                     lambda pkt: pkt.ext_len in [1, 2]),
-                   ConditionalField(LongField("vc", 0),
+                   ConditionalField(XLongField("vc", 0),
                                     lambda pkt: pkt.ext_len == 2)
                    ]
 
